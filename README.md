@@ -1,4 +1,19 @@
-|    | Name           | Total cost | Note                                                                                                                                                                                                                                                                      |
+Resources:
+- https://ethereum.github.io/yellowpaper/paper.pdf
+- https://www.evm.codes/
+- https://ethereum.org/en/developers/docs/evm/opcodes/
+
+```solidity
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity 0.8.7;
+
+contract GasTesting {
+    function doNothing() external payable {}
+}
+```
+What is gas cost when we call function doNothing() in GasTesting contract?
+
+|    | Instruction    | Total cost | Note                                                                                                                                                                                                                                                                      |
 |----|----------------|------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 00 | PUSH1 80       | 3          |                                                                                                                                                                                                                                                                           |
 | 02 | PUSH1 40       | 3          |                                                                                                                                                                                                                                                                           |
@@ -17,7 +32,7 @@
 | 18 | EQ             | 3          |                                                                                                                                                                                                                                                                           |
 | 19 | PUSH1 21       | 3          |                                                                                                                                                                                                                                                                           |
 | 1b | JUMPI          | 10         |                                                                                                                                                                                                                                                                           |
-| 1c | JUMPDEST       | /          |                                                                                                                                                                                                                                                                           |
+| 1c | JUMPDEST       | /          | This will be executed only if calldata is less than 4 bytes (function signature is invalid), and REVERT would be our last instruction executed.                                                                                                                           |
 | 1d | PUSH1 00       | /          |                                                                                                                                                                                                                                                                           |
 | 1f | DUP1           | /          |                                                                                                                                                                                                                                                                           |
 | 20 | REVERT         | /          |                                                                                                                                                                                                                                                                           |
