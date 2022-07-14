@@ -10,4 +10,8 @@ describe("GasTesting", function () {
   it("Call doNothing() function", async function () {
     await gasTesting.doNothing();
   });
+
+  it("Call doNothingNonPayable() function", async function () {
+    await gasTesting.doNothingNonPayable();
+  });
 });
