@@ -1,17 +1,25 @@
 describe("GasTesting", function () {
-  let gasTesting;
+  let gasTestingPayable, gasTestingNonPayable;
 
   beforeEach(async function () {
-    const GasTesting = await ethers.getContractFactory("GasTesting");
-    gasTesting = await GasTesting.deploy();
-    await gasTesting.deployed();
+    const GasTestingPayable = await ethers.getContractFactory(
+      "GasTestingPayable"
+    );
+    gasTestingPayable = await GasTestingPayable.deploy();
+    await gasTestingPayable.deployed();
+
+    const GasTestingNonPayable = await ethers.getContractFactory(
+      "GasTestingNonPayable"
+    );
+    gasTestingNonPayable = await GasTestingNonPayable.deploy();
+    await gasTestingNonPayable.deployed();
   });
 
   it("Call doNothing() function", async function () {
-    await gasTesting.doNothing();
+    await gasTestingPayable.doNothing();
   });
 
   it("Call doNothingNonPayable() function", async function () {
-    await gasTesting.doNothingNonPayable();
+    await gasTestingNonPayable.doNothingNonPayable();
   });
 });
