@@ -2,6 +2,7 @@
 - https://ethereum.github.io/yellowpaper/paper.pdf
 - https://www.evm.codes/
 - https://ethereum.org/en/developers/docs/evm/opcodes/
+- https://docs.soliditylang.org/en/latest/internals/layout_in_memory.html
 
 <br/>
 
